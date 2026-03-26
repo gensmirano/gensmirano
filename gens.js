@@ -70,3 +70,31 @@ const appearOnScroll = new IntersectionObserver((entries, observer) => {
 faders.forEach(fader => {
   appearOnScroll.observe(fader);
 });
+
+/* CAROSELLO */
+const track = document.getElementById('carousel-track');
+const slides = document.querySelectorAll('.carousel-img');
+const next = document.getElementById('next');
+const prev = document.getElementById('prev');
+
+let index = 0;
+
+function updateCarousel(){
+  track.style.transform = `translateX(-${index * 100}%)`;
+}
+
+next.addEventListener('click', () => {
+  index = (index + 1) % slides.length;
+  updateCarousel();
+});
+
+prev.addEventListener('click', () => {
+  index = (index - 1 + slides.length) % slides.length;
+  updateCarousel();
+});
+
+/* autoplay */
+setInterval(() => {
+  index = (index + 1) % slides.length;
+  updateCarousel();
+}, 4000);
