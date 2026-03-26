@@ -15,35 +15,18 @@
 <meta property="og:image" content="https://gensmirano.it/img/hero-giardino.jpg">
 
 <!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Roboto:wght@400;500;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="gens.css">
 
+<!-- LOTTIE (mancava → fix hamburger) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.11.0/lottie.min.js"></script>
+
 <style>
-/* =========================
-EVENTI PRO
-========================= */
 .eventi-container{
   max-width:1200px;
   margin:0 auto;
   padding:5rem 1rem;
-}
-
-.eventi-header{
-  text-align:center;
-  margin-bottom:3rem;
-}
-
-.eventi-header h1{
-  color:#3A6A44;
-  font-family:'Lora',serif;
-  font-size:2.8rem;
-  margin-bottom:.5rem;
-}
-
-.eventi-header p{
-  color:#555;
-  font-size:1.2rem;
 }
 
 .eventi-list{
@@ -57,50 +40,19 @@ EVENTI PRO
   border-radius:12px;
   overflow:hidden;
   box-shadow:0 8px 20px rgba(0,0,0,0.08);
-  transition:transform .3s;
-  display:flex;
-  flex-direction:column;
+  transition:.3s;
 }
 
-.evento-item:hover{
-  transform:translateY(-5px);
-}
+.evento-item:hover{transform:translateY(-5px);}
 
-.evento-img{
-  width:100%;
-  height:200px;
-  object-fit:cover;
-}
+.evento-img{width:100%;height:200px;object-fit:cover;}
 
-.evento-content{
-  padding:1.5rem;
-  display:flex;
-  flex-direction:column;
-  gap:.5rem;
-}
+.evento-content{padding:1.5rem;}
 
-.evento-date{
-  font-weight:700;
-  color:#3A6A44;
-}
-
-.evento-time{
-  font-weight:500;
-  color:#2B4F35;
-}
-
-.evento-title{
-  font-size:1.4rem;
-  font-weight:700;
-  margin:0.5rem 0;
-  color:#3A6A44;
-}
-
-.evento-desc{
-  font-size:1rem;
-  color:#555;
-  line-height:1.4;
-}
+.evento-title{font-size:1.4rem;color:#3A6A44;font-weight:700;}
+.evento-date{color:#3A6A44;font-weight:700;}
+.evento-time{color:#2B4F35;}
+.evento-desc{color:#555;}
 </style>
 </head>
 
@@ -122,10 +74,9 @@ EVENTI PRO
     </div>
 
     <nav id="nav-menu" class="nav-menu">
-
       <div class="menu-header">
         <a href="index.html">
-          <img src="img/gens-bar-mirano.svg" alt="Gens Bar Mirano" class="menu-logo-img">
+          <img src="img/gens-bar-mirano.svg" class="menu-logo-img">
         </a>
         <div id="menu-plant"></div>
       </div>
@@ -135,95 +86,83 @@ EVENTI PRO
         <li><a href="index.html#menu">Menu</a></li>
         <li><a href="eventi-gens-mirano.html">Eventi</a></li>
         <li><a href="index.html#contatti">Contatti</a></li>
-        <li class="menu-whatsapp-item">
-          <a href="https://wa.me/393758421817" target="_blank">
-            <img src="img/logo-whatsapp.png" alt="WhatsApp">
-          </a>
-        </li>
       </ul>
-
     </nav>
   </div>
 </header>
 
-<main class="eventi-container">
+<div class="site-content">
 
-  <div class="eventi-header">
+<!-- HERO (aggiunta PRO) -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <p style="letter-spacing:2px;font-size:.85rem;color:#ddd;">
+      MIRANO • EVENTI • SOCIAL
+    </p>
+
     <h1>Eventi Gens Mirano</h1>
-    <p>Serate, musica, degustazioni e momenti speciali nel cuore di Mirano.</p>
-  </div>
 
-  <div class="eventi-list" id="eventi-list">
-    <!-- Eventi caricati da Google Sheet -->
+    <p>Serate, musica e momenti da ricordare 🍷</p>
   </div>
+</section>
 
-</main>
+<!-- EVENTI -->
+<section class="eventi-container">
+  <div class="eventi-list" id="eventi-list"></div>
+</section>
+
+</div>
 
 <script>
-// ==========================
-// CONFIG GOOGLE SHEET
-// ==========================
+// GOOGLE SHEET
 const sheetCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQHWnFzmuBy1tUV_FAW47Mwv-VquLC1-EBRlaextrMZ5ArgfvVH_YkzIdL0TOBf04Rl89Mu51Xuh74y/pub?output=csv";
 
-// ==========================
-// FETCH EVENTI
-// ==========================
-async function loadEventi() {
-  try {
-    const res = await fetch(sheetCSV);
-    const text = await res.text();
+async function loadEventi(){
+  const res = await fetch(sheetCSV);
+  const text = await res.text();
+  const events = parseCSV(text);
 
-    const events = parseCSV(text);
+  const container = document.getElementById('eventi-list');
 
-    const container = document.getElementById('eventi-list');
-    events.forEach(ev => {
-      const div = document.createElement('div');
-      div.className = 'evento-item';
-      div.innerHTML = `
-        <img src="${ev.Foto}" alt="${ev.Titolo}" class="evento-img">
-        <div class="evento-content">
-          <span class="evento-date">${ev.Data}</span> 
-          <span class="evento-time">${ev.Orario}</span>
-          <h3 class="evento-title">${ev.Titolo}</h3>
-          <p class="evento-desc">${ev.Descrizione}</p>
-        </div>
-      `;
-      container.appendChild(div);
-    });
+  events.forEach(ev=>{
+    const div = document.createElement('div');
+    div.className='evento-item';
 
-  } catch(err) {
-    console.error("Errore caricamento eventi:", err);
-  }
+    div.innerHTML=`
+      <img src="${ev.Foto}" class="evento-img">
+      <div class="evento-content">
+        <div class="evento-date">${ev.Data} • ${ev.Orario}</div>
+        <h3 class="evento-title">${ev.Titolo}</h3>
+        <p class="evento-desc">${ev.Descrizione}</p>
+      </div>
+    `;
+
+    container.appendChild(div);
+  });
 }
 
-// ==========================
-// PARSER CSV ROBUSTO
-// ==========================
-function parseCSV(str) {
-  const rows = [];
-  const lines = str.trim().split('\n');
-  const headers = lines[0].split(',');
+// CSV parser (anti virgole)
+function parseCSV(str){
+  const rows=[];
+  const lines=str.trim().split('\n');
+  const headers=lines[0].split(',');
 
   for(let i=1;i<lines.length;i++){
-    if(!lines[i].trim()) continue;
+    let cells=[],current='',inQuotes=false;
 
-    const cells = [];
-    let current = '';
-    let inQuotes = false;
-
-    for(let j=0;j<lines[i].length;j++){
-      const char = lines[i][j];
-      if(char === '"') { inQuotes = !inQuotes; continue; }
-      if(char === ',' && !inQuotes) { cells.push(current); current=''; continue; }
-      current += char;
+    for(let char of lines[i]){
+      if(char=='"'){inQuotes=!inQuotes;continue;}
+      if(char==','&&!inQuotes){cells.push(current);current='';continue;}
+      current+=char;
     }
     cells.push(current);
 
-    const obj = {};
-    headers.forEach((h, idx) => obj[h.trim()] = (cells[idx] || '').trim());
+    let obj={};
+    headers.forEach((h,i)=>obj[h.trim()]=(cells[i]||'').trim());
     rows.push(obj);
   }
-
   return rows;
 }
 

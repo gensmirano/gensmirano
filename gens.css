@@ -427,3 +427,126 @@ FADE-IN
   opacity:1;
   transform:translateY(0);
 }
+
+/* =========================
+EVENTO CARD PRO
+========================= */
+.evento-item{
+  position:relative;
+  border-radius:16px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  transition:all .4s ease;
+  display:flex;
+  flex-direction:column;
+}
+
+/* hover elegante */
+.evento-item:hover{
+  transform:translateY(-8px) scale(1.01);
+  box-shadow:0 20px 45px rgba(0,0,0,0.15);
+}
+
+/* =========================
+IMMAGINE
+========================= */
+.evento-img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  transition:transform .5s ease;
+}
+
+.evento-item:hover .evento-img{
+  transform:scale(1.08);
+}
+
+/* overlay gradiente */
+.evento-item::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,0.5), transparent 50%);
+  opacity:0;
+  transition:.4s;
+}
+
+.evento-item:hover::after{
+  opacity:1;
+}
+
+/* =========================
+CONTENUTO
+========================= */
+.evento-content{
+  padding:1.5rem;
+  display:flex;
+  flex-direction:column;
+  gap:.6rem;
+}
+
+/* data stile badge */
+.evento-date{
+  display:inline-block;
+  font-size:.8rem;
+  font-weight:700;
+  color:#fff;
+  background:#3A6A44;
+  padding:.3rem .7rem;
+  border-radius:20px;
+  width:max-content;
+}
+
+/* orario */
+.evento-time{
+  font-size:.85rem;
+  color:#777;
+  margin-top:-5px;
+}
+
+/* titolo */
+.evento-title{
+  font-size:1.5rem;
+  font-weight:700;
+  color:#3A6A44;
+  line-height:1.2;
+}
+
+/* descrizione */
+.evento-desc{
+  font-size:.95rem;
+  color:#555;
+  line-height:1.5;
+}
+
+/* =========================
+EFFETTO "LIVE TAG"
+========================= */
+.evento-item::before{
+  content:'EVENTO';
+  position:absolute;
+  top:12px;
+  left:12px;
+  font-size:.7rem;
+  background:#fff;
+  color:#3A6A44;
+  padding:.3rem .6rem;
+  border-radius:20px;
+  font-weight:700;
+  letter-spacing:.5px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+@media(max-width:768px){
+  .evento-img{
+    height:180px;
+  }
+
+  .evento-title{
+    font-size:1.3rem;
+  }
+}
