@@ -550,3 +550,9 @@ RESPONSIVE
     font-size:1.3rem;
   }
 }
+
+/* FORZA EVENTI */
+.evento-img{
+  aspect-ratio: 3/2;
+  object-fit: cover;
+}
