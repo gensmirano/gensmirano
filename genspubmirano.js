@@ -1,100 +1,47 @@
-<!-- © 2026 Romeo - tutti i diritti riservati -->
-// ==========================
-// LOTTIE: MENU PLANT
-// ==========================
-
-let plantAnimation = lottie.loadAnimation({
-  container: document.getElementById('menu-plant'),
-  renderer: 'svg',
-  loop: false,      // non ripete
-  autoplay: false,  // parte solo quando apri il menu
-  path: 'img/plant.json'
+// =========================
+// LOADER
+// =========================
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+  if (loader) loader.style.display = "none";
 });
 
 
-// ==========================
-// HAMBURGER MENU
-// ==========================
-function initHamburger() {
+// =========================
+// MOBILE MENU (HAMBURGER)
+// =========================
+const burger = document.getElementById("burger");
+const nav = document.getElementById("navMenu");
 
-  const hamburger = document.getElementById('hamburger');
-  const nav = document.getElementById('nav-menu');
-  const siteContent = document.querySelector('.site-content');
-
-  hamburger.addEventListener('click', () => {
-
-    hamburger.classList.toggle('active');
-    nav.classList.toggle('active');
-    siteContent.classList.toggle('menu-open');
-
-    // quando il menu viene aperto
-    if(nav.classList.contains('active')){
-
-      // riparte da frame 0
-      plantAnimation.goToAndPlay(0, true);
-
-    }
-
+if (burger && nav) {
+  burger.addEventListener("click", () => {
+    nav.classList.toggle("open");
+    burger.classList.toggle("open");
   });
 
+  // chiudi menu quando clicchi un link
+  document.querySelectorAll(".nav a").forEach(link => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("open");
+      burger.classList.remove("open");
+    });
+  });
 }
 
-initHamburger();
 
+// =========================
+// SCROLL REVEAL
+// =========================
+const items = document.querySelectorAll(".reveal");
 
-// ==========================
-// FADE IN SCROLL
-// ==========================
-const faders = document.querySelectorAll('.fade-in');
-
-const appearOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -50px 0px"
-};
-
-const appearOnScroll = new IntersectionObserver((entries, observer) => {
-
+const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-
-    if(entry.isIntersecting){
-
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-
+    if (entry.isIntersecting) {
+      entry.target.classList.add("active");
     }
-
   });
-
-}, appearOptions);
-
-faders.forEach(fader => {
-  appearOnScroll.observe(fader);
+}, {
+  threshold: 0.15
 });
 
-/* CAROSELLO */
-const track = document.getElementById('carousel-track');
-const slides = document.querySelectorAll('.carousel-img');
-const next = document.getElementById('next');
-const prev = document.getElementById('prev');
-
-let index = 0;
-
-function updateCarousel(){
-  track.style.transform = `translateX(-${index * 100}%)`;
-}
-
-next.addEventListener('click', () => {
-  index = (index + 1) % slides.length;
-  updateCarousel();
-});
-
-prev.addEventListener('click', () => {
-  index = (index - 1 + slides.length) % slides.length;
-  updateCarousel();
-});
-
-/* autoplay */
-setInterval(() => {
-  index = (index + 1) % slides.length;
-  updateCarousel();
-}, 4000);
+items.forEach(el => observer.observe(el));

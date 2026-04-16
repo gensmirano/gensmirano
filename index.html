@@ -1,371 +1,141 @@
-<!-- © 2026 Romeo - Tutti i diritti riservati -->
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link rel="canonical" href="https://gensmirano.it/">
-<meta name="robots" content="index, follow">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-
-    {
-      "@type": ["BarOrPub", "FoodEstablishment"],
-      "name": "GENS PUB BIRRERIA",
-      "image": "https://gensbar.it/pubmirano.jpg",
-      "@id": "https://gensmirano.it",
-      "url": "https://gensmirano.it",
-      "telephone": "+39 375 842 1817",
-      "priceRange": "€€",
-      "description": "Pub, birreria e wine bar a Mirano specializzato in birre artigianali, vino naturale ed eventi come il Pintatlon.",
-      
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Via Belvedere, 3b",
-        "addressLocality": "Mirano",
-        "addressRegion": "VE",
-        "postalCode": "30035",
-        "addressCountry": "IT"
-      },
-
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 45.49459190521775,
-        "longitude": 12.107677825421542
-      },
-
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Monday",
-          "opens": "18:00",
-          "closes": "00:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Tuesday",
-          "opens": "18:00",
-          "closes": "00:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Wednesday",
-          "opens": "11:30",
-          "closes": "15:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Wednesday",
-          "opens": "18:00",
-          "closes": "00:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Thursday",
-          "opens": "11:30",
-          "closes": "15:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Thursday",
-          "opens": "18:00",
-          "closes": "00:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Friday",
-          "opens": "11:30",
-          "closes": "15:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Friday",
-          "opens": "18:00",
-          "closes": "01:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Saturday",
-          "opens": "18:00",
-          "closes": "01:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Sunday",
-          "opens": "17:30",
-          "closes": "00:00"
-        }
-      ],
-
-      "sameAs": [
-        "https://www.facebook.com/profile.php?id=61567064270592",
-        "https://www.instagram.com/gens_mirano",
-        "https://wa.me/393758421817"
-      ],
-
-      "servesCuisine": ["Birra artigianale", "Vino naturale", "Snack"],
-      "acceptsReservations": "True"
-    },
-
-{
-  "@type": "Event",
-  "name": "Pintatlon - Corsa e Birra al Gens Pub Mirano",
-  "image": "https://gensmirano.it/pintatlon.jpg",
-  "description": "Pintatlon è l’evento settimanale del Gens: ogni lunedì alle 19 si parte per una corsa in compagnia per le strade di Mirano e si torna al pub per una birra insieme.",
-
-"startDate": "2026-04-20T19:00",
-
-  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-  "eventStatus": "https://schema.org/EventScheduled",
-
-  "eventSchedule": {
-    "@type": "Schedule",
-    "repeatFrequency": "P1W",
-    "byDay": "https://schema.org/Monday",
-    "startTime": "19:00",
-    "endTime": "21:00"
-  },
-
-  "location": {
-    "@type": "Place",
-    "name": "GENS PUB BIRRERIA",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Via Belvedere, 3b",
-      "addressLocality": "Mirano",
-      "addressRegion": "VE",
-      "postalCode": "30035",
-      "addressCountry": "IT"
-    }
-  },
-
-  "organizer": {
-    "@type": "Organization",
-    "name": "GENS PUB BIRRERIA",
-    "url": "https://gensmirano.it"
-  }
-}
-
-  ]
-}
-</script>
-
-<title>Gens Bar Mirano | Wine, Beer & Snacks</title>
-
-<meta name="description" content="Gens Bar a Mirano: vino naturale, birra artigianale, snack e serate speciali in centro città.">
-
-<!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://gensmirano.it/">
-<meta property="og:title" content="Gens Bar Mirano">
-<meta property="og:description" content="Wine, beer & snacks nel cuore di Mirano.">
-<meta property="og:image" content="https://gensmirano.it/img/hero-giardino.jpg">
-
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Roboto:wght@400;500;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="genspubmirano.css">
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.11.0/lottie.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gens Pub Mirano</title>
+  <link rel="stylesheet" href="genspubmirano.css">
 </head>
 
 <body>
 
-<header>
-  <div class="container header-container">
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="beer">🍺</div>
+  <p>Accendiamo le luci del pub...</p>
+</div>
 
-    <div class="logo">
-      <a href="index.html">
-        <img src="img/gens-bar-mirano.svg" alt="Gens Bar Mirano" class="logo-img">
-      </a>
-    </div>
+<header class="header">
+  <img src="img/gens-bar-mirano.svg" class="logo">
 
-    <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+  <nav class="nav" id="navMenu">
+    <a href="#hero">Home</a>
+    <a href="#story">Il Pub</a>
+    <a href="#menu">Menu</a>
+    <a href="#pinta">Pintatlon</a>
+    <a href="#contact">Contatti</a>
+  </nav>
 
-    <nav id="nav-menu" class="nav-menu">
-
-      <div class="menu-header">
-        <a href="index.html">
-          <img src="img/gens-bar-mirano.svg" alt="Gens Bar Mirano" class="menu-logo-img">
-        </a>
-        <div id="menu-plant"></div>
-      </div>
-
-<ul class="menu-right">
-  <li><a href="chi-siamo.html">Chi siamo</a></li>
-  <li><a href="menu-gens-mirano.html">Menu</a></li>
-  <li><a href="eventi-gens-mirano.html">Eventi</a></li>
-  <li><a href="contatti.html">Contatti</a></li>
-  <li class="menu-whatsapp-item">
-    <a href="https://wa.me/393758421817" target="_blank">
-      <img src="img/logo-whatsapp.png" alt="WhatsApp">
-    </a>
-  </li>
-</ul>
-
-    </nav>
+  <div class="burger" id="burger">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
 </header>
 
-<div class="site-content">
-
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-overlay"></div>
+<section class="hero" id="hero">
+  <img src="img/hero-giardino.jpg" class="hero-bg">
+
+  <div class="hero-glow"></div>
 
   <div class="hero-content">
-    <p style="letter-spacing:2px; font-size:0.85rem; color:#ddd; margin-bottom:10px;">
-      MIRANO • WINE • SOCIAL
-    </p>
-
-    <h1>Benvenuti al Gens</h1>
-
-    <p>Un calice, due chiacchiere e la serata prende forma 🍷</p>
-
-    <a href="#menu" class="btn-cta">Scopri il Menu</a>
+    <h1>GENS PUB</h1>
+    <p>Mirano • Birra • Musica • Serate leggendarie</p>
+    <a href="#menu" class="cta">ENTRA NEL PUB</a>
   </div>
 </section>
 
-<!-- CHI SIAMO -->
-<section id="chi-siamo" class="bar fade-in">
-  <div class="container">
-
-    <h2>Chi siamo</h2>
-
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="glass-card reveal">
+    <h2>Il nostro mondo</h2>
     <p>
-      Nel cuore di Mirano, Gens è più di un bar: è un punto d’incontro.
-      Vino naturale, birra artigianale e un’atmosfera che invita a restare.
+      Un pub vero. Luci basse, birra fredda, amici veri.
+      Ogni sera può diventare una storia.
     </p>
 
-    <!-- VIDEO -->
-    <div class="video-circle-container">
-      <video autoplay muted loop playsinline>
-        <source src="img/spritz.mp4" type="video/mp4">
-      </video>
+    <div class="circle-video">
+      <video src="img/spritz.mp4" autoplay muted loop></video>
     </div>
-
   </div>
 </section>
 
 <!-- MENU -->
-<section id="menu" class="menu fade-in">
-  <div class="container">
+<section class="menu" id="menu">
+  <h2 class="title">MENU GENS</h2>
 
-    <h2>Menu in evidenza</h2>
-
-    <div class="menu-grid">
-
-      <div class="menu-item">
-        <img src="img/vino.jpg" alt="Vino Naturale">
-        <h3>Vino Naturale</h3>
-      </div>
-
-      <div class="menu-item">
-        <img src="img/birra.jpg" alt="Birra Artigianale">
-        <h3>Birra Artigianale</h3>
-      </div>
-
-      <div class="menu-item">
-        <img src="img/snack.jpg" alt="Snack">
-        <h3>Snack</h3>
-      </div>
-
+  <div class="menu-grid">
+    <div class="item reveal">
+      <img src="img/prodotto1.jpg">
+      <h3>Birre Artigianali</h3>
     </div>
 
+    <div class="item reveal">
+      <img src="img/prodotto2.jpg">
+      <h3>Cocktail Signature</h3>
+    </div>
+
+    <div class="item reveal">
+      <img src="img/prodotto3.jpg">
+      <h3>Food da Pub</h3>
+    </div>
   </div>
 </section>
 
-<!-- EVENTI -->
-<section id="eventi" class="menu fade-in">
-  <div class="container">
+<!-- PINTATON -->
+<section class="pinta" id="pinta">
+  <img src="img/pintatlon.jpg" class="pinta-img reveal">
 
-    <h2>Eventi & Collaborazioni</h2>
-
+  <div class="pinta-text reveal">
+    <h2>PINTATLON</h2>
     <p>
-      Serate, musica e collaborazioni locali.
-      Ogni settimana qualcosa di diverso, sempre con la stessa energia.
+      La gara più folle del Gens.
+      Non è solo bere. È resistenza, risate e caos controllato.
     </p>
-
   </div>
 </section>
 
-<div class="eventi-carousel">
+<!-- MAP -->
+<section class="map-section" id="contact">
+  <h2>Dove siamo</h2>
 
-  <div class="carousel-track" id="carousel-track">
-    <img src="img/festa1.jpg" alt="Evento Gens Mirano" class="carousel-img">
-    <img src="img/festa2.jpg" alt="Serata Gens Bar" class="carousel-img">
-    <img src="img/festa3.jpg" alt="Evento musica Mirano" class="carousel-img">
+  <div class="map">
+    <iframe
+      src="https://www.google.com/maps?q=Mirano&output=embed">
+    </iframe>
   </div>
 
-  <!-- CONTROLLI -->
-  <button class="carousel-btn prev" id="prev">&#10094;</button>
-  <button class="carousel-btn next" id="next">&#10095;</button>
-
-</div>
-
-<!-- CONTATTI -->
-<section id="contatti" class="contatti fade-in">
-  <div class="container">
-
-    <h2>Contatti & Prenotazioni</h2>
-
-    <p style="margin-bottom:25px;">
-      Scrivici o passa a trovarci. Il primo giro lo scegli tu 😉
-    </p>
-
-    <div class="contatti-container">
-
-      <div class="modulo-contatti">
-        <form>
-          <input type="text" placeholder="Nome" required>
-          <input type="email" placeholder="Email" required>
-          <textarea rows="4" placeholder="Messaggio" required></textarea>
-          <button type="submit">Invia richiesta</button>
-        </form>
-      </div>
-
-      <div class="mappa" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-        <iframe
-          src="https://www.google.com/maps?q=Gens+Mirano&output=embed"
-          style="border:0; position:absolute; top:0; left:0; width:100%; height:100%;"
-          loading="lazy">
-        </iframe>
-        <p class="map-caption">📍 Gens Bar, Mirano</p>
-      </div>
-
-    </div>
-
+  <div class="contact">
+    <p>📍 Mirano (VE)</p>
+    <p>📞 +39 351 969 4361</p>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 Gens S.R.L.</p>
-
   <div class="social">
-    <a href="https://www.facebook.com/profile.php?id=61567064270592" target="_blank">
-      <img src="img/logo-fb.png" alt="Facebook">
+
+    <a href="https://www.facebook.com/auditoriumpiovenerocchette" target="_blank">
+      <!-- FB -->
+      <svg viewBox="0 0 640 640"><path d="M576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 440 146.7 540.8 258.2 568.5L258.2 398.2L205.4 398.2L205.4 320L258.2 320L258.2 286.3C258.2 199.2 297.6 158.8 383.2 158.8C399.4 158.8 427.4 162 438.9 165.2L438.9 236C432.9 235.4 422.4 235 409.3 235C367.3 235 351.1 250.9 351.1 292.2L351.1 320L434.7 320L420.3 398.2L351 398.2L351 574.1C477.8 558.8 576 450.9 576 320z"/></svg>
     </a>
-    <a href="https://www.instagram.com/gens_mirano" target="_blank">
-      <img src="img/logo-instagram.png" alt="Instagram">
+
+    <a href="https://instagram.com/pioveneauditorium" target="_blank">
+      <!-- IG -->
+      <svg viewBox="0 0 640 640"><path d="M320.3 205C256.8 204.8 205.2 256.2 205 319.7C204.8 383.2 256.2 434.8 319.7 435C383.2 435.2 434.8 383.8 435 320.3C435.2 256.8 383.8 205.2 320.3 205z"/></svg>
     </a>
-    <a href="https://wa.me/393758421817" target="_blank">
-      <img src="img/logo-whatsapp.png" alt="WhatsApp">
+
+    <a href="https://wa.me/393519694361" target="_blank">
+      <!-- WA -->
+      <svg viewBox="0 0 640 640"><path d="M476.9 161.1C435 119.1 379.2 96 319.9 96C197.5 96 97.9 195.6 97.9 318C97.9 357.1 108.1 395.3 127.5 429L96 544L213.7 513.1C246.1 530.8 282.6 540.1 319.8 540.1C442.2 540.1 544 440.5 544 318.1C544 258.8 518.8 203.1 476.9 161.1z"/></svg>
     </a>
+
   </div>
+
+  <p>© Gens Pub Mirano — Beer, Music, Chaos</p>
 </footer>
 
-</div>
-
 <script src="genspubmirano.js"></script>
-
 </body>
 </html>
