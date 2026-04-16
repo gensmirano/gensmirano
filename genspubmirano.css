@@ -369,3 +369,82 @@ footer{
     drop-shadow(0 0 25px rgba(57,255,136,0.6));
   transform:scale(1.03);
 }
+
+/* CONTATTI */
+.contact{
+  text-align:center;
+  padding:20px;
+}
+
+.contact h3{
+  color:#39ff88;
+  margin-bottom:10px;
+}
+
+.contact-hours{
+  margin-top:15px;
+  display:inline-block;
+  padding:15px 20px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(57,255,136,0.2);
+  line-height:1.6;
+}
+
+.contact-hours strong{
+  color:#39ff88;
+}
+
+/* NUOVI CONTATTI */
+.contact{
+  padding:40px 20px;
+  max-width:1000px;
+  margin:auto;
+}
+
+/* GRID */
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:flex-start;
+}
+
+/* SINISTRA */
+.contact-left h3{
+  color:#39ff88;
+  margin-bottom:10px;
+}
+
+.contact-left p{
+  margin:6px 0;
+}
+
+/* DESTRA */
+.contact-right{
+  padding:20px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(57,255,136,0.2);
+}
+
+.contact-right h4{
+  color:#39ff88;
+  margin-bottom:10px;
+}
+
+.contact-right p{
+  margin:5px 0;
+}
+
+/* MOBILE AUTO STACK */
+@media(max-width:768px){
+  .contact-grid{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+
+  .contact-right{
+    margin-top:20px;
+  }
+}
