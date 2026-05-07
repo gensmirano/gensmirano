@@ -912,3 +912,76 @@ footer{
     padding:10px;
   }
 }
+
+/* =========================
+   MOBILE TABLE → CARD VIEW
+========================= */
+
+@media (max-width: 768px){
+
+  .tap-table thead{
+    display:none; /* nasconde intestazioni */
+  }
+
+  .tap-table,
+  .tap-table tbody,
+  .tap-table tr,
+  .tap-table td{
+    display:block;
+    width:100%;
+  }
+
+  .tap-table tr{
+    margin-bottom:20px;
+    padding:15px;
+    border:1px solid rgba(57,255,136,0.25);
+    border-radius:12px;
+    background:rgba(255,255,255,0.03);
+  }
+
+  .tap-table td{
+    padding:8px 0;
+    border:none;
+    position:relative;
+  }
+
+  /* PRIMA COLONNA = TITOLO BIRRA */
+  .tap-table td:first-child{
+    font-size:18px;
+    font-weight:700;
+    color:#39ff88;
+    margin-bottom:10px;
+  }
+
+  /* aggiunge label prima dei valori */
+  .tap-table td:nth-child(2)::before{
+    content:"Birrificio: ";
+    color:#777;
+  }
+
+  .tap-table td:nth-child(3)::before{
+    content:"Stile: ";
+    color:#777;
+  }
+
+  .tap-table td:nth-child(4)::before{
+    content:"Provenienza: ";
+    color:#777;
+  }
+
+  .tap-table td:nth-child(5)::before{
+    content:"Gradazione: ";
+    color:#777;
+  }
+
+  .tap-table td:nth-child(6)::before{
+    content:"Piccolo: ";
+    color:#777;
+  }
+
+  .tap-table td:nth-child(7)::before{
+    content:"Grande: ";
+    color:#777;
+  }
+
+}
