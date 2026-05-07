@@ -827,3 +827,88 @@ footer{
     height:200px;
   }
 }
+
+/* =========================
+   TAPLIST BOARD (LAVAGNA MODERNA)
+========================= */
+
+.taplist-board{
+  border:1px solid rgba(57,255,136,0.25);
+  padding:30px;
+  background:rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+  border-radius:18px;
+}
+
+/* sottotitolo */
+.tap-subtitle{
+  text-align:center;
+  opacity:0.7;
+  margin-bottom:25px;
+  letter-spacing:1px;
+}
+
+/* wrapper scroll mobile */
+.tap-wrapper{
+  overflow-x:auto;
+}
+
+/* =========================
+   TABELLA
+========================= */
+
+.tap-table{
+  width:100%;
+  border-collapse:collapse;
+  color:#eee;
+  font-size:14px;
+}
+
+/* header */
+.tap-table thead th{
+  text-align:left;
+  padding:12px;
+  color:#39ff88;
+  text-transform:uppercase;
+  font-size:12px;
+  letter-spacing:1px;
+  border-bottom:1px solid rgba(57,255,136,0.3);
+}
+
+/* righe */
+.tap-table tbody td{
+  padding:14px 12px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+/* hover effetto neon pub */
+.tap-table tbody tr{
+  transition:0.25s;
+}
+
+.tap-table tbody tr:hover{
+  background:rgba(57,255,136,0.08);
+  transform:scale(1.01);
+}
+
+/* =========================
+   EFFETTO “LAVAGNA SOFT”
+========================= */
+
+.taplist-board{
+  background:
+    radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size:3px 3px;
+}
+
+/* mobile */
+@media(max-width:768px){
+  .tap-table{
+    font-size:13px;
+  }
+
+  .tap-table thead th,
+  .tap-table tbody td{
+    padding:10px;
+  }
+}
