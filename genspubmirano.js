@@ -19,7 +19,6 @@ if (burger && nav) {
     burger.classList.toggle("open");
   });
 
-  // chiudi menu quando clicchi un link
   document.querySelectorAll(".nav a").forEach(link => {
     link.addEventListener("click", () => {
       nav.classList.remove("open");
@@ -46,11 +45,15 @@ const observer = new IntersectionObserver(entries => {
 
 items.forEach(el => observer.observe(el));
 
-const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRe5KKKXcOERA7qDCoWHaUuA60jhXryRHfl7cE6CYtHSvhRIjXa5bl41iJsAc-jnpIQo1L5enuGNsqV/pub?output=csv";
+
+// =========================
+// BEERS (TAPLIST)
+// =========================
+const BEER_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRe5KKKXcOERA7qDCoWHaUuA60jhXryRHfl7cE6CYtHSvhRIjXa5bl41iJsAc-jnpIQo1L5enuGNsqV/pub?output=csv";
 
 async function loadBeers() {
   try {
-    const res = await fetch(SHEET_URL);
+    const res = await fetch(BEER_SHEET_URL);
     const data = await res.text();
 
     const rows = data.trim().split("\n").slice(1);
@@ -63,10 +66,7 @@ async function loadBeers() {
     rows.forEach(row => {
       const cols = parseCSVRow(row);
 
-      // sicurezza: se riga vuota o incompleta
       if (!cols[0]) return;
-
-      // colonna "disponibile" = SI/NO
       if (!cols[7] || cols[7].toUpperCase() !== "SI") return;
 
       const tr = document.createElement("tr");
@@ -89,9 +89,63 @@ async function loadBeers() {
   }
 }
 
-/**
- * Parser CSV robusto (gestisce virgole dentro le celle)
- */
+
+// =========================
+// EVENTS
+// =========================
+const EVENTS_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ5_wEexCQxnpoWje0YrtRDB8C33glfApo-zPmAdBZGaiD_Arlkt8advDNzas5nB-gNbzws20K18iVk/pub?output=csv";
+
+async function loadEvents() {
+  try {
+    const res = await fetch(EVENTS_SHEET_URL);
+    const data = await res.text();
+
+    const rows = data.trim().split("\n").slice(1);
+    const container = document.querySelector("#eventsContainer");
+
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    rows.forEach(row => {
+      const cols = parseCSVRow(row);
+
+      const titolo = cols[0];
+      const descrizione = cols[1];
+      const data = cols[2];
+      const orario = cols[3];
+      const attivo = cols[4];
+
+      if (!titolo) return;
+      if (!attivo || attivo.toUpperCase() !== "SI") return;
+
+      const card = document.createElement("div");
+      card.className = "event-card";
+
+      card.innerHTML = `
+        <div class="event-date">
+          <span class="event-day">${data}</span>
+          <span class="event-time">${orario}</span>
+        </div>
+
+        <div class="event-content">
+          <h3>${titolo}</h3>
+          <p>${descrizione}</p>
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+
+  } catch (err) {
+    console.error("Errore caricamento eventi:", err);
+  }
+}
+
+
+// =========================
+// CSV PARSER
+// =========================
 function parseCSVRow(text) {
   const result = [];
   let current = "";
@@ -117,8 +171,12 @@ function parseCSVRow(text) {
   );
 }
 
-// inizializza
-loadBeers();
 
-// refresh automatico
+// =========================
+// INIT
+// =========================
+loadBeers();
+loadEvents();
+
 setInterval(loadBeers, 30000);
+setInterval(loadEvents, 30000);
