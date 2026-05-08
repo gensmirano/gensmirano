@@ -1444,4 +1444,33 @@ footer{
     0 0 20px rgba(57,255,136,0.15);
 }
 
+/* FIX TABELLA DINAMICA */
+.tap-table{
+  width:100%;
+  border-collapse:collapse;
+  table-layout:fixed;
+}
 
+/* 🔥 FIX PRINCIPALE ALLINEAMENTO */
+.tap-table thead th,
+.tap-table tbody td{
+  padding:14px 12px;
+  vertical-align:middle;
+  line-height:1.4;
+}
+
+/* header leggermente più compatto ma NON diverso nel padding verticale */
+.tap-table thead th{
+  font-weight:500;
+}
+
+/* celle */
+.tap-table tbody td{
+  font-weight:400;
+}
+
+/* evita micro shift visivo */
+.tap-table th,
+.tap-table td{
+  box-sizing:border-box;
+}
