@@ -180,3 +180,16 @@ loadEvents();
 
 setInterval(loadBeers, 30000);
 setInterval(loadEvents, 30000);
+
+function loadPartial(id, url) {
+  fetch(url)
+    .then(r => r.text())
+    .then(html => {
+      document.getElementById(id).innerHTML = html;
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadPartial("header", "partials/header.html");
+  loadPartial("footer", "partials/footer.html");
+});
