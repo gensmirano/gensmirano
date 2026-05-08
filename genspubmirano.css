@@ -1409,19 +1409,27 @@ footer{
 
 /* FRECCIA */
 .scroll-arrow{
-  margin-top:20px;
-  font-size:2.5rem;
+  margin-top:30px;
+
+  font-size:7rem;
+  font-weight:900;
+
   color:#39ff88;
-  animation:bounceArrow 1.2s infinite;
-  text-shadow:0 0 10px rgba(57,255,136,0.6);
+
+  line-height:1;
+
+  display:inline-block;
+
+  animation:bounceArrow 1.2s ease-in-out infinite;
 }
 
 @keyframes bounceArrow{
   0%,100%{
     transform:translateY(0);
   }
+
   50%{
-    transform:translateY(10px);
+    transform:translateY(18px);
   }
 }
 
