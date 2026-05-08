@@ -503,7 +503,7 @@ footer{
   margin-top:10px;
   margin-bottom:10px;
 
-  font-size:1.4rem;
+  font-size:2rem; /* SCRITTURAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA */
   letter-spacing:6px;
   font-weight:700;
 
@@ -525,13 +525,6 @@ footer{
 
   color:#cfcfcf;
 }
-
-@media(max-width:768px){
-
-  .hero-tagline{
-    font-size:1rem;
-    letter-spacing:4px;
-  }
 
   .hero-subtitle{
     font-size:0.95rem;
@@ -1430,6 +1423,17 @@ footer{
   50%{
     transform:translateY(10px);
   }
+}
+
+/* BERRRRE */
+.hero-tagline{
+  font-size: clamp(1.2rem, 4vw, 3rem);
+  letter-spacing: 6px;
+  font-weight: 700;
+  color: #f5f5f5;
+  text-shadow:
+    0 0 10px rgba(255,255,255,0.15),
+    0 0 20px rgba(57,255,136,0.15);
 }
 
 
