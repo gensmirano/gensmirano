@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Menu Food | Gens Pub Mirano</title>
+
+  <meta name="description"
+        content="Cucina del Gens Pub Mirano. Toast, cicchetti e piatti da pub sempre aggiornati.">
+
+  <link rel="stylesheet" href="genspubmirano.css">
+</head>
+
+<body>
+
+<!-- LOADER -->
+<div id="loader" class="loader">
+  <div class="beer">🍔</div>
+</div>
+
+<!-- HEADER DINAMICO -->
+<header id="header"></header>
+
+<!-- HERO -->
+<section class="hero">
+
+  <img src="img/food-hero.jpg" class="hero-img" alt="Cibo Gens Pub Mirano">
+
+  <div class="overlay"></div>
+
+  <div class="hero-text reveal">
+    <h1>MENU CUCINA</h1>
+    <p>Cibo da pub fatto bene, senza complicazioni inutili</p>
+  </div>
+
+</section>
+
+<!-- MENU FOOD -->
+<section class="menu-section">
+
+  <div class="taplist-board reveal">
+
+    <h2 class="section-title">CUCINA</h2>
+
+    <p class="tap-subtitle">
+      Tutto quello che esce dalla cucina del Gens
+    </p>
+
+    <div class="tap-wrapper">
+
+      <table class="tap-table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Descrizione</th>
+          </tr>
+        </thead>
+
+        <tbody id="menuBody"></tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FOOTER DINAMICO -->
+<footer id="footer"></footer>
+
+<script src="genspubmirano.js"></script>
+
+<script>
+const CATEGORY = "cibo";
+</script>
+
+</body>
+</html>

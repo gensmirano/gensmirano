@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Cocktails | Gens Pub Mirano</title>
+
+  <meta name="description"
+        content="Cocktails del Gens Pub Mirano. Mix classici e signature sempre aggiornati.">
+
+  <link rel="stylesheet" href="genspubmirano.css">
+</head>
+
+<body>
+
+<!-- LOADER -->
+<div id="loader" class="loader">
+  <div class="beer">🍸</div>
+</div>
+
+<!-- HEADER DINAMICO -->
+<header id="header"></header>
+
+<!-- HERO -->
+<section class="hero">
+
+  <img src="img/cocktails-hero.jpg" class="hero-img" alt="Cocktails Gens Pub Mirano">
+
+  <div class="overlay"></div>
+
+  <div class="hero-text reveal">
+    <h1>COCKTAILS</h1>
+    <p>Mix classici, signature e caos liquido controllato</p>
+  </div>
+
+</section>
+
+<!-- MENU COCKTAIL -->
+<section class="menu-section">
+
+  <div class="taplist-board reveal">
+
+    <h2 class="section-title">DRINK LIST</h2>
+
+    <p class="tap-subtitle">
+      Cocktail selezionati dal bancone del Gens
+    </p>
+
+    <div class="tap-wrapper">
+
+      <table class="tap-table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Descrizione</th>
+          </tr>
+        </thead>
+
+        <tbody id="menuBody"></tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FOOTER DINAMICO -->
+<footer id="footer"></footer>
+
+<script src="genspubmirano.js"></script>
+
+<script>
+const CATEGORY = "drink";
+</script>
+
+</body>
+</html>

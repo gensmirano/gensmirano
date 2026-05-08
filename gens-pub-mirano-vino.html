@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Vini | Gens Pub Mirano</title>
+
+  <meta name="description"
+        content="Selezione vini del Gens Pub Mirano. Vini bianchi, rossi e speciali sempre aggiornati.">
+
+  <link rel="stylesheet" href="genspubmirano.css">
+</head>
+
+<body>
+
+<!-- LOADER (se lo usi nel sito) -->
+<div id="loader" class="loader">
+  <div class="beer">🍷</div>
+</div>
+
+<!-- HEADER DINAMICO -->
+<header id="header"></header>
+
+<!-- HERO -->
+<section class="hero">
+
+  <img src="img/vino-hero.jpg" class="hero-img" alt="Vini Gens Pub Mirano">
+
+  <div class="overlay"></div>
+
+  <div class="hero-text reveal">
+    <h1>SELEZIONE VINI</h1>
+    <p>Dal calice semplice alle bottiglie speciali del Gens</p>
+  </div>
+
+</section>
+
+<!-- MENU VINI -->
+<section class="menu-section">
+
+  <div class="taplist-board reveal">
+
+    <h2 class="section-title">VINI</h2>
+
+    <p class="tap-subtitle">
+      Tutti i vini disponibili al Gens Pub Mirano
+    </p>
+
+    <div class="tap-wrapper">
+
+      <table class="tap-table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Descrizione</th>
+          </tr>
+        </thead>
+
+        <tbody id="menuBody"></tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FOOTER DINAMICO -->
+<footer id="footer"></footer>
+
+<script src="genspubmirano.js"></script>
+
+<script>
+const CATEGORY = "vino";
+</script>
+
+</body>
+</html>

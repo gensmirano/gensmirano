@@ -16,7 +16,6 @@ function initMenu() {
 
   if (!burger || !nav) return;
 
-  // evita doppi listener se initMenu viene richiamata più volte
   if (burger.dataset.init === "true") return;
   burger.dataset.init = "true";
 
@@ -37,8 +36,6 @@ function initMenu() {
 // =========================
 // SCROLL REVEAL
 // =========================
-const items = document.querySelectorAll(".reveal");
-
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -49,23 +46,52 @@ const observer = new IntersectionObserver(entries => {
   threshold: 0.15
 });
 
-items.forEach(el => observer.observe(el));
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+});
 
 
 // =========================
-// BEERS (TAPLIST)
+// CSV PARSER (robusto per virgole)
+// =========================
+function parseCSVRow(text) {
+  const result = [];
+  let current = "";
+  let inQuotes = false;
+
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+
+    if (char === '"') {
+      inQuotes = !inQuotes;
+    } else if (char === "," && !inQuotes) {
+      result.push(current);
+      current = "";
+    } else {
+      current += char;
+    }
+  }
+
+  result.push(current);
+
+  return result.map(v => v.replace(/^"|"$/g, "").trim());
+}
+
+
+// =========================
+// BEERS
 // =========================
 const BEER_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRe5KKKXcOERA7qDCoWHaUuA60jhXryRHfl7cE6CYtHSvhRIjXa5bl41iJsAc-jnpIQo1L5enuGNsqV/pub?output=csv";
 
 async function loadBeers() {
+  const tbody = document.querySelector("#beerTable tbody");
+  if (!tbody) return;
+
   try {
     const res = await fetch(BEER_SHEET_URL);
     const data = await res.text();
 
     const rows = data.trim().split("\n").slice(1);
-    const tbody = document.querySelector("#beerTable tbody");
-
-    if (!tbody) return;
 
     tbody.innerHTML = "";
 
@@ -91,7 +117,7 @@ async function loadBeers() {
     });
 
   } catch (err) {
-    console.error("Errore caricamento birre:", err);
+    console.error("Errore birre:", err);
   }
 }
 
@@ -102,14 +128,14 @@ async function loadBeers() {
 const EVENTS_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ5_wEexCQxnpoWje0YrtRDB8C33glfApo-zPmAdBZGaiD_Arlkt8advDNzas5nB-gNbzws20K18iVk/pub?output=csv";
 
 async function loadEvents() {
+  const container = document.querySelector("#eventsContainer");
+  if (!container) return;
+
   try {
     const res = await fetch(EVENTS_SHEET_URL);
     const data = await res.text();
 
     const rows = data.trim().split("\n").slice(1);
-    const container = document.querySelector("#eventsContainer");
-
-    if (!container) return;
 
     container.innerHTML = "";
 
@@ -133,7 +159,6 @@ async function loadEvents() {
           <span class="event-day">${data}</span>
           <span class="event-time">${orario}</span>
         </div>
-
         <div class="event-content">
           <h3>${titolo}</h3>
           <p>${descrizione}</p>
@@ -144,54 +169,73 @@ async function loadEvents() {
     });
 
   } catch (err) {
-    console.error("Errore caricamento eventi:", err);
+    console.error("Errore eventi:", err);
   }
 }
 
 
 // =========================
-// CSV PARSER
+// MENU (vino / cibo / drink)
 // =========================
-function parseCSVRow(text) {
-  const result = [];
-  let current = "";
-  let inQuotes = false;
+const MENU_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQaF0RzrOrq8Fm6erKh8rVR-lc4Rtjy71qCTQNTUusGey-cYdZvJPC_lgFndFxAt68DlOboJMR4OiI2/pub?output=csv";
 
-  for (let i = 0; i < text.length; i++) {
-    const char = text[i];
+async function loadMenu() {
+  const tbody = document.querySelector("#menuBody");
+  if (!tbody) return;
 
-    if (char === '"') {
-      inQuotes = !inQuotes;
-    } else if (char === "," && !inQuotes) {
-      result.push(current);
-      current = "";
-    } else {
-      current += char;
-    }
+  try {
+    const res = await fetch(MENU_SHEET_URL);
+    const data = await res.text();
+
+    const rows = data.trim().split("\n").slice(1);
+
+    tbody.innerHTML = "";
+
+    rows.forEach(row => {
+      const cols = parseCSVRow(row);
+
+      const nome = cols[0];
+      const desc = cols[1];
+      const cat = cols[2]?.toLowerCase();
+      const attivo = cols[3]?.toUpperCase();
+
+      if (!nome) return;
+      if (attivo !== "SI") return;
+
+      if (typeof CATEGORY !== "undefined" && cat !== CATEGORY) return;
+
+      const tr = document.createElement("tr");
+
+      tr.innerHTML = `
+        <td>${nome}</td>
+        <td>${desc}</td>
+      `;
+
+      tbody.appendChild(tr);
+    });
+
+  } catch (err) {
+    console.error("Errore menu:", err);
   }
-
-  result.push(current);
-
-  return result.map(v =>
-    v.replace(/^"|"$/g, "").trim()
-  );
 }
 
 
 // =========================
-// INIT PAGE CONTENT
+// INIT PAGE
 // =========================
 function initPage() {
   loadBeers();
   loadEvents();
+  loadMenu();
 
   setInterval(loadBeers, 30000);
   setInterval(loadEvents, 30000);
+  setInterval(loadMenu, 30000);
 }
 
 
 // =========================
-// PARTIALS (HEADER / FOOTER)
+// PARTIALS
 // =========================
 function loadPartial(id, url) {
   const el = document.getElementById(id);
@@ -203,7 +247,7 @@ function loadPartial(id, url) {
       el.innerHTML = html;
 
       if (id === "header") {
-        initMenu(); // menu funziona anche nei partial
+        initMenu();
       }
     });
 }
@@ -216,8 +260,6 @@ document.addEventListener("DOMContentLoaded", () => {
   loadPartial("header", "partials/header.html");
   loadPartial("footer", "partials/footer.html");
 
-  // 🔥 FIX FONDAMENTALE: menu anche se header è statico
   initMenu();
-
   initPage();
 });
