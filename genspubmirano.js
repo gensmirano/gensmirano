@@ -16,6 +16,10 @@ function initMenu() {
 
   if (!burger || !nav) return;
 
+  // evita doppi listener se initMenu viene richiamata più volte
+  if (burger.dataset.init === "true") return;
+  burger.dataset.init = "true";
+
   burger.addEventListener("click", () => {
     nav.classList.toggle("open");
     burger.classList.toggle("open");
@@ -175,7 +179,7 @@ function parseCSVRow(text) {
 
 
 // =========================
-// INIT
+// INIT PAGE CONTENT
 // =========================
 function initPage() {
   loadBeers();
@@ -190,14 +194,16 @@ function initPage() {
 // PARTIALS (HEADER / FOOTER)
 // =========================
 function loadPartial(id, url) {
+  const el = document.getElementById(id);
+  if (!el) return;
+
   fetch(url)
     .then(r => r.text())
     .then(html => {
-      document.getElementById(id).innerHTML = html;
+      el.innerHTML = html;
 
-      // IMPORTANTISSIMO: init menu DOPO caricamento header
       if (id === "header") {
-        initMenu();
+        initMenu(); // menu funziona anche nei partial
       }
     });
 }
@@ -209,6 +215,9 @@ function loadPartial(id, url) {
 document.addEventListener("DOMContentLoaded", () => {
   loadPartial("header", "partials/header.html");
   loadPartial("footer", "partials/footer.html");
+
+  // 🔥 FIX FONDAMENTALE: menu anche se header è statico
+  initMenu();
 
   initPage();
 });
