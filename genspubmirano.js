@@ -10,10 +10,12 @@ window.addEventListener("load", () => {
 // =========================
 // MOBILE MENU (HAMBURGER)
 // =========================
-const burger = document.getElementById("burger");
-const nav = document.getElementById("navMenu");
+function initMenu() {
+  const burger = document.getElementById("burger");
+  const nav = document.getElementById("navMenu");
 
-if (burger && nav) {
+  if (!burger || !nav) return;
+
   burger.addEventListener("click", () => {
     nav.classList.toggle("open");
     burger.classList.toggle("open");
@@ -175,21 +177,38 @@ function parseCSVRow(text) {
 // =========================
 // INIT
 // =========================
-loadBeers();
-loadEvents();
+function initPage() {
+  loadBeers();
+  loadEvents();
 
-setInterval(loadBeers, 30000);
-setInterval(loadEvents, 30000);
+  setInterval(loadBeers, 30000);
+  setInterval(loadEvents, 30000);
+}
 
+
+// =========================
+// PARTIALS (HEADER / FOOTER)
+// =========================
 function loadPartial(id, url) {
   fetch(url)
     .then(r => r.text())
     .then(html => {
       document.getElementById(id).innerHTML = html;
+
+      // IMPORTANTISSIMO: init menu DOPO caricamento header
+      if (id === "header") {
+        initMenu();
+      }
     });
 }
 
+
+// =========================
+// DOM READY
+// =========================
 document.addEventListener("DOMContentLoaded", () => {
   loadPartial("header", "partials/header.html");
   loadPartial("footer", "partials/footer.html");
+
+  initPage();
 });
