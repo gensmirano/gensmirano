@@ -947,9 +947,9 @@ footer{
   }
 
   /* aggiunge label prima dei valori */
-  .tap-table td:nth-child(2)::before{
-    content:"Birrificio: ";
-    color:#777;
+  body.page-beer .tap-table td:nth-child(2)::before{ /* CONTROLLAREEEEEE */
+  content:"Birrificio: ";
+  color:#777;
   }
 
   .tap-table td:nth-child(3)::before{
